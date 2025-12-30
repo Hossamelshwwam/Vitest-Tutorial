@@ -12,4 +12,19 @@ function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
-export { sum, divide, capitalize };
+async function asycnFn(value) {
+  if (!value) throw new Error("Invalid value");
+  return 2 + value;
+}
+
+export async function fetchUser() {
+  const res = await fetch("/user");
+  return res.json();
+}
+
+export async function getUserName() {
+  const user = await fetchUser();
+  return user.name;
+}
+
+export { sum, divide, capitalize, asycnFn, fetchUser, getUserName };
